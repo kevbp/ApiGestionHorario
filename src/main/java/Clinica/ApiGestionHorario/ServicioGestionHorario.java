@@ -106,32 +106,31 @@ public class ServicioGestionHorario {
         return salHor;
     }
 
-    private List<SlotHorarioDTO> generarSlots(String horaInicioStr, String horaFinStr, Long idHorario) {
+    private List<SlotHorarioDTO> generarSlots(String horaIni, String horaFin, Long idHor) {
 
-        List<SlotHorarioDTO> listaSlots = new ArrayList<>();
+        List<SlotHorarioDTO> lisSlo = new ArrayList<>();
 
-        LocalTime horaActual = LocalTime.parse(horaInicioStr);
-        LocalTime horaLimite = LocalTime.parse(horaFinStr);
+        LocalTime horAct = LocalTime.parse(horaIni);
+        LocalTime horLim = LocalTime.parse(horaFin);
 
-        int duracionMinutos = 20;
+        int durMin = 20;
 
-        while (horaActual.plusMinutes(duracionMinutos).isBefore(horaLimite)
-                || horaActual.plusMinutes(duracionMinutos).equals(horaLimite)) {
+        while (horAct.plusMinutes(durMin).isBefore(horLim)
+                || horAct.plusMinutes(durMin).equals(horLim)) {
 
-            LocalTime horaFinSlot = horaActual.plusMinutes(duracionMinutos);
+            LocalTime horFinSlo = horAct.plusMinutes(durMin);
 
             SlotHorarioDTO slot = new SlotHorarioDTO();
-            slot.setIdHor(idHorario);
-            slot.setHorIni(horaActual.format(fmtHora));
-            slot.setHorFin(horaFinSlot.format(fmtHora));
+            slot.setIdHor(idHor);
+            slot.setHorIni(horAct.format(fmtHora));
+            slot.setHorFin(horFinSlo.format(fmtHora));
             slot.setEst("Disponible");
+            lisSlo.add(slot);
 
-            listaSlots.add(slot);
-
-            horaActual = horaFinSlot;
+            horAct = horFinSlo;
         }
 
-        return listaSlots;
+        return lisSlo;
     }
 
 }
