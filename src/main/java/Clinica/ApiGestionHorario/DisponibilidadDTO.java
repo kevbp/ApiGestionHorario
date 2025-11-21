@@ -1,23 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Clinica.ApiGestionHorario;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class DisponibilidadDTO {
+
     private Long id;
     private Long idMed;
-    private String fec;
-    private String horIni;
-    private String horFin;
+    private Long idEsp;
+    private LocalDate fec;
+    private LocalTime horIni;
+    private LocalTime horFin;
     private String est;
 
     public DisponibilidadDTO() {
     }
 
-    public DisponibilidadDTO(Long id, Long idMed, String fec, String horIni, String horFin, String est) {
+    public DisponibilidadDTO(Long id, Long idMed, Long idEsp, LocalDate fec, LocalTime horIni, LocalTime horFin, String est) {
         this.id = id;
         this.idMed = idMed;
+        this.idEsp = idEsp;
         this.fec = fec;
         this.horIni = horIni;
         this.horFin = horFin;
@@ -40,27 +43,35 @@ public class DisponibilidadDTO {
         this.idMed = idMed;
     }
 
-    public String getFec() {
+    public Long getIdEsp() {
+        return idEsp;
+    }
+
+    public void setIdEsp(Long idEsp) {
+        this.idEsp = idEsp;
+    }
+
+    public LocalDate getFec() {
         return fec;
     }
 
-    public void setFec(String fec) {
+    public void setFec(LocalDate fec) {
         this.fec = fec;
     }
 
-    public String getHorIni() {
+    public LocalTime getHorIni() {
         return horIni;
     }
 
-    public void setHorIni(String horIni) {
+    public void setHorIni(LocalTime horIni) {
         this.horIni = horIni;
     }
 
-    public String getHorFin() {
+    public LocalTime getHorFin() {
         return horFin;
     }
 
-    public void setHorFin(String horFin) {
+    public void setHorFin(LocalTime horFin) {
         this.horFin = horFin;
     }
 
@@ -72,7 +83,5 @@ public class DisponibilidadDTO {
         this.est = est;
     }
 
-
-    
     
 }
